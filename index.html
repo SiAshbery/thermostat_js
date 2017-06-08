@@ -11,6 +11,9 @@
 
     $(document).ready(function() {
     var thermostat = new Thermostat;
+      $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=097ab6f93a50d80748fac6323f9a984d&units=metric', function(data) {
+      console.log(data);
+    })
 
       function updateTemperature() {
         $('#temperature').text(thermostat.getCurrentTemperature());
