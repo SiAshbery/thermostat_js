@@ -48,16 +48,6 @@ function Thermostat(){
     this.temperature = 20;
   };
 
-  Thermostat.prototype.getCurrentEnergyUsage = function(){
-      if(this.tempterature < 18) {
-        return "low-usage";
-      }
-      else if (this.temperature >= 18 && this.tempterature < 25) {
-        return "medium-usage";
-      }
-      return "high-usage";
-  };
-
   Thermostat.prototype.getCurrentEnergyUsage = function() {
   if (this.temperature < 18) {
     return 'low-usage';
