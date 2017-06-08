@@ -12,19 +12,30 @@
     $(document).ready(function() {
     var thermostat = new Thermostat;
 
-      $("#temperature").text(thermostat.getCurrentTemperature());
+      function updateTemperature() {
+        $('#temperature').text(thermostat.getCurrentTemperature());
+          if (thermostat.getCurrentEnergyUsage() === "low-usage"){
+            $('body').css("background-color","green");
+          } else if (thermostat.getCurrentEnergyUsage() === "medium-usage"){
+            $("body").css("background-color","yellow");
+          } else {
+            $("body").css("background-color","red");
+        };
+      };
+
+      updateTemperature();
 
       $("#temperature-up").click(function() {
         thermostat.up();
-        $("#temperature").text(thermostat.getCurrentTemperature());
+        updateTemperature();
       });
       $("#temperature-down").click(function() {
         thermostat.down();
-        $("#temperature").text(thermostat.getCurrentTemperature());
+        updateTemperature();
       });
       $("#temperature-reset").click(function() {
         thermostat.reset();
-        $("#temperature").text(thermostat.getCurrentTemperature());
+        updateTemperature();
       });
       $("#powersaving-toggle").click(function() {
         thermostat.togglePowerSavingMode();
@@ -32,6 +43,7 @@
         $("#powersaving-toggle").text("PSM " + thermostat.getCurrentPowerSavingStatus());
         $("#temperature").text(thermostat.getCurrentTemperature());
       });
+
     });
     </script>
     <section>
