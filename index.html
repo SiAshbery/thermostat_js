@@ -7,48 +7,7 @@
   <body>
     <script src="src/thermostat.js"></script>
     <script src="jquery.js"></script>
-    <script>
-
-    $(document).ready(function() {
-    var thermostat = new Thermostat;
-      $.get('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=097ab6f93a50d80748fac6323f9a984d&units=metric', function(data) {
-      console.log(data);
-    })
-
-      function updateTemperature() {
-        $('#temperature').text(thermostat.getCurrentTemperature());
-          if (thermostat.getCurrentEnergyUsage() === "low-usage"){
-            $("body").css("background-image","url(images/low_usage.jpg)");
-          } else if (thermostat.getCurrentEnergyUsage() === "medium-usage"){
-            $("body").css("background-image","url(images/medium-usage.jpg)");
-          } else {
-            $("body").css("background-image","url(images/high_usage.jpg)");
-        };
-      };
-
-      updateTemperature();
-
-      $("#temperature-up").click(function() {
-        thermostat.up();
-        updateTemperature();
-      });
-      $("#temperature-down").click(function() {
-        thermostat.down();
-        updateTemperature();
-      });
-      $("#temperature-reset").click(function() {
-        thermostat.reset();
-        updateTemperature();
-      });
-      $("#powersaving-toggle").click(function() {
-        thermostat.togglePowerSavingMode();
-        $("#powersaving-status").text(thermostat.getCurrentPowerSavingStatus());
-        $("#powersaving-toggle").text("PSM " + thermostat.getCurrentPowerSavingStatus());
-        $("#temperature").text(thermostat.getCurrentTemperature());
-      });
-
-    });
-    </script>
+    <script src ="interface.js"></script>
     <section>
       <h1 id="temperature"></h1>
       <p>
@@ -58,6 +17,15 @@
         power saving mode is <span id="powersaving-status">on</span>
         <button id="powersaving-toggle">PSM on</button>
       </p>
+      <section>
+        <h1>Current Temperature in <span id="current-location"></span>: <span id="current-temperature"></span></h1>
+        <form>
+          <select id="city-list">
+            <option value ="London,uk">London</option>
+            <option value ="Manchester,uk">Manchester</option>
+            <option value ="Paris,fr">Paris</option>
+            <option value ="NewYork,us">New York</option>
+      </section>
 
     </section>
 
