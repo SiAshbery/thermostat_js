@@ -1,0 +1,22 @@
+.main {
+  position: relative;
+  
+}
+control {
+  position: absolute;
+  left: 0px;
+  width: 200px;
+}
+current {
+  margin-left: 200px;
+}
+powerStatus {
+  position: fixed;
+  bottom: 0;
+  left 0;
+  height 70px;
+  width: 100%;
+}
+temp {
+  margin-bottom: 120px;
+}
