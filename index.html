@@ -15,11 +15,11 @@
       function updateTemperature() {
         $('#temperature').text(thermostat.getCurrentTemperature());
           if (thermostat.getCurrentEnergyUsage() === "low-usage"){
-            $('body').css("background-color","green");
+            $("body").css("background-image","url(images/low_usage.jpg)");
           } else if (thermostat.getCurrentEnergyUsage() === "medium-usage"){
-            $("body").css("background-color","yellow");
+            $("body").css("background-image","url(images/medium-usage.jpg)");
           } else {
-            $("body").css("background-color","red");
+            $("body").css("background-image","url(images/high_usage.jpg)");
         };
       };
 
