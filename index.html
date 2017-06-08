@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Thermostat</title>
+  </head>
+  <body>
+    <script src="src/thermostat.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+
+    $(document).ready(function() {
+    var thermostat = new Thermostat;
+
+      $("#temperature").text(thermostat.getCurrentTemperature());
+
+      $("#temperature-up").click(function() {
+        thermostat.up();
+        $("#temperature").text(thermostat.getCurrentTemperature());
+      });
+      $("#temperature-down").click(function() {
+        thermostat.down();
+        $("#temperature").text(thermostat.getCurrentTemperature());
+      });
+      $("#temperature-reset").click(function() {
+        thermostat.reset();
+        $("#temperature").text(thermostat.getCurrentTemperature());
+      });
+      $("#powersaving-toggle").click(function() {
+        thermostat.togglePowerSavingMode();
+        $("#powersaving-status").text(thermostat.getCurrentPowerSavingStatus());
+        $("#powersaving-toggle").text("PSM " + thermostat.getCurrentPowerSavingStatus());
+        $("#temperature").text(thermostat.getCurrentTemperature());
+      });
+    });
+    </script>
+    <section>
+      <h1 id="temperature"></h1>
+      <p>
+        <button id="temperature-up">+</button>
+        <button id="temperature-down">-</button>
+        <button id="temperature-reset">reset</button>
+        power saving mode is <span id="powersaving-status">on</span>
+        <button id="powersaving-toggle">PSM on</button>
+      </p>
+
+    </section>
+
+  </body>
+</html>
